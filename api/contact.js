@@ -12,9 +12,19 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Configure Transporter (using Environment Variables)
+  // Configuration Check
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.RECEIVER_EMAIL) {
+    console.error('SERVER ERROR: Missing environment variables.');
+    return res.status(500).json({ 
+      error: 'Server is not configured for email. Please add SMTP_USER, SMTP_PASS, and RECEIVER_EMAIL to Vercel environment variables.' 
+    });
+  }
+
+  // Configure Transporter (Explicit for better reliability on serverless)
   const transporter = nodemailer.createTransport({
-    service: 'gmail', // Defaulting to Gmail as it's the most common request
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // use SSL
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS, // This must be an App Password

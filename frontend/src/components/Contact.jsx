@@ -109,10 +109,20 @@ const Contact = () => {
             className="btn-primary w-full py-5 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
           >
             <div className="relative z-10 flex items-center justify-center gap-4">
-              {status === 'sending' ? 'Establishing Connection...' : status === 'success' ? 'Transmission Successful!' : 'Send Message'}
-              <i className={`fas ${status === 'success' ? 'fa-check-circle' : 'fa-paper-plane'} text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform`}></i>
+              {status === 'sending' ? 'Establishing Connection...' : status === 'success' ? 'Transmission Successful!' : status === 'error' ? 'Transmission Failed' : 'Send Message'}
+              <i className={`fas ${status === 'success' ? 'fa-check-circle' : status === 'error' ? 'fa-exclamation-triangle' : 'fa-paper-plane'} text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform`}></i>
             </div>
           </button>
+          
+          {status === 'error' && (
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center text-xs font-bold text-red-400 mt-4 uppercase tracking-widest"
+            >
+              Check SMTP Credentials in Vercel Dashboard
+            </motion.p>
+          )}
         </form>
       </div>
     </div>
