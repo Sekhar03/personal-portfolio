@@ -26,14 +26,14 @@ export default async function handler(req, res) {
     port: 465,
     secure: true, // use SSL
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS, // This must be an App Password
+      user: process.env.SMTP_USER || 'sekharparida2003@gmail.com',
+      pass: process.env.SMTP_PASS || 'iptx bpbk uhkv dvtc', // Using your provided App Password
     },
   });
 
   const mailOptions = {
-    from: `"${name}" <${process.env.SMTP_USER}>`,
-    to: process.env.RECEIVER_EMAIL,
+    from: `"Sekhar (Portfolio)" <${process.env.SMTP_USER || 'sekharparida2003@gmail.com'}>`,
+    to: process.env.RECEIVER_EMAIL || 'sekharparida2003@gmail.com',
     replyTo: email,
     subject: `Portfolio Contact: ${subject}`,
     text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
