@@ -1,6 +1,7 @@
 {
   "name": "portfolio-root",
   "private": true,
+  "type": "module",
   "scripts": {
     "install-frontend": "cd frontend && npm install",
     "build-frontend": "cd frontend && npm run build",
