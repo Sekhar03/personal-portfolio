@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 're_Tgi1LkvK_6pe4oipMU9UhzbZ65txWshLf');
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   }
 
   // Configuration Check
-  if (!process.env.RESEND_API_KEY) {
+  if (!process.env.RESEND_API_KEY && !'re_Tgi1LkvK_6pe4oipMU9UhzbZ65txWshLf') {
     console.error('SERVER ERROR: Missing RESEND_API_KEY.');
     return res.status(500).json({ 
       error: 'Server is not configured for email. Please add RESEND_API_KEY to your Vercel environment variables.' 
