@@ -10,16 +10,32 @@ const Contact = () => {
 
   const [status, setStatus] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-    
-    // Simulate successful submission
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+
+    try {
+      const response = await fetch("https://formspree.io/f/mqaeaprl", { 
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus(''), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus(''), 5000);
+      }
+    } catch (error) {
+      setStatus('error');
       setTimeout(() => setStatus(''), 5000);
-    }, 1500);
+    }
   };
 
   return (
@@ -39,6 +55,7 @@ const Contact = () => {
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Identity</label>
               <input 
                 type="text" 
+                name="name"
                 placeholder="Name"
                 className="w-full bg-dark/40 border border-white/5 rounded-2xl px-6 py-4 focus:border-primary/50 outline-none transition-all placeholder:text-slate-700 font-semibold"
                 value={formData.name}
@@ -50,6 +67,7 @@ const Contact = () => {
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Transmission Address</label>
               <input 
                 type="email" 
+                name="email"
                 placeholder="Email"
                 className="w-full bg-dark/40 border border-white/5 rounded-2xl px-6 py-4 focus:border-primary/50 outline-none transition-all placeholder:text-slate-700 font-semibold"
                 value={formData.email}
@@ -63,6 +81,7 @@ const Contact = () => {
             <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Protocol / Subject</label>
             <input 
               type="text" 
+              name="subject"
               placeholder="Reason for Contact"
               className="w-full bg-dark/40 border border-white/5 rounded-2xl px-6 py-4 focus:border-primary/50 outline-none transition-all placeholder:text-slate-700 font-semibold"
               value={formData.subject}
@@ -75,6 +94,7 @@ const Contact = () => {
             <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Payload / Message</label>
             <textarea 
               rows="6"
+              name="message"
               placeholder="Hello Sekhar, I'd like to talk about..."
               className="w-full bg-dark/40 border border-white/5 rounded-2xl px-6 py-4 focus:border-primary/50 outline-none transition-all placeholder:text-slate-700 font-semibold resize-none"
               value={formData.message}
