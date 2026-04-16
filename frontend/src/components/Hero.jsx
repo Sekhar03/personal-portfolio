@@ -126,7 +126,7 @@ const Hero = ({ data }) => {
               <div key={i} className="overflow-hidden py-1">
                 <motion.span 
                   variants={wordVariants}
-                  className={`inline-block text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-outfit leading-[1.1] tracking-tighter ${
+                  className={`inline-block text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black font-outfit leading-[1.2] tracking-tighter ${
                     i === 1 || i === 3 ? "text-gradient" : "text-white"
                   }`}
                 >
@@ -139,7 +139,7 @@ const Hero = ({ data }) => {
           {/* Typewriter Mission */}
           <motion.div 
             variants={revealVariants}
-            className="text-base sm:text-lg md:text-xl font-bold font-outfit text-white/90 mb-6 md:mb-8 min-h-[1.5em] flex items-center border-l-2 border-white/5 pl-4 md:pl-6"
+            className="text-sm sm:text-base md:text-lg font-bold font-outfit text-white/90 mb-6 md:mb-8 min-h-[1.5em] flex items-center border-l-2 border-white/5 pl-4 md:pl-6"
           >
             Executing: <span className="ml-2 md:ml-4 font-black"><Typewriter texts={typingTexts} /></span>
           </motion.div>
@@ -147,7 +147,7 @@ const Hero = ({ data }) => {
           {/* Technical Narrative */}
           <motion.p 
             variants={revealVariants}
-            className="text-base sm:text-xl md:text-2xl text-slate-400 font-medium max-w-xl mb-10 lg:mb-14 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-slate-400 font-medium max-w-xl mb-10 lg:mb-14 leading-relaxed"
           >
             I'm <span className="text-white font-bold">{data.name}</span>, a professional <span className="text-primary">{data.title}</span> transforming 
             raw terminal logic into <span className="text-white bg-white/5 px-2 py-1 rounded">production-grade</span> value. I bridge the gap between 
