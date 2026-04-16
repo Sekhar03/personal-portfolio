@@ -25,23 +25,21 @@ const Contact = () => {
         }
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setStatus(''), 5000);
       } else {
-        // Fallback to error state which triggers the mailto button
         setStatus('error');
+        // We set the status to error, but won't show the mailto fallback button anymore
+        // for a cleaner 'one-click' experience effort.
       }
     } catch (error) {
       console.error('Submission failed:', error);
       setStatus('error');
     }
-  };
-
-  const handleMailto = () => {
-    const mailtoLink = `mailto:sekharparida2003@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-    window.location.href = mailtoLink;
   };
 
   return (
@@ -109,35 +107,24 @@ const Contact = () => {
             ></textarea>
           </div>
 
-          {status === 'error' ? (
-            <button 
-              type="button" 
-              onClick={handleMailto}
-              className="w-full py-5 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 font-bold uppercase tracking-widest hover:bg-red-500/20 transition-all flex items-center justify-center gap-4"
-            >
-              <i className="fas fa-envelope-open-text"></i>
-              Open Email Client to Send Directly
-            </button>
-          ) : (
-            <button 
-              type="submit" 
-              disabled={status === 'sending'}
-              className="btn-primary w-full py-5 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
-            >
-              <div className="relative z-10 flex items-center justify-center gap-4">
-                {status === 'sending' ? 'Establishing Connection...' : status === 'success' ? 'Transmission Successful!' : 'Send Message'}
-                <i className={`fas ${status === 'success' ? 'fa-check-circle' : 'fa-paper-plane'} text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform`}></i>
-              </div>
-            </button>
-          )}
+          <button 
+            type="submit" 
+            disabled={status === 'sending'}
+            className="btn-primary w-full py-5 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
+          >
+            <div className="relative z-10 flex items-center justify-center gap-4">
+              {status === 'sending' ? 'Establishing Connection...' : status === 'success' ? 'Transmission Successful!' : status === 'error' ? 'Transmission Failed' : 'Send Message'}
+              <i className={`fas ${status === 'success' ? 'fa-check-circle' : status === 'error' ? 'fa-exclamation-triangle' : 'fa-paper-plane'} text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform`}></i>
+            </div>
+          </button>
           
           {status === 'error' && (
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center text-[10px] font-bold text-slate-500 mt-4 uppercase tracking-[0.2em]"
+              className="text-center text-[10px] font-bold text-red-400 mt-4 uppercase tracking-[0.2em]"
             >
-              Automatic delivery failed. Use the direct link above to send manually.
+              System Error: Check RESEND_API_KEY in Vercel Dashboard.
             </motion.p>
           )}
         </form>

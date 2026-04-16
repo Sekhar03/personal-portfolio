@@ -8,6 +8,7 @@
     "build": "npm run install-frontend && npm run build-frontend"
   },
   "dependencies": {
-    "nodemailer": "^8.0.5"
+    "nodemailer": "^8.0.5",
+    "resend": "^6.12.0"
   }
 }
