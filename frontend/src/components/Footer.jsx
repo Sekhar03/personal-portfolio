@@ -29,7 +29,7 @@ const Footer = ({ profile, achieves }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-24 w-full lg:w-auto">
+          <div className="flex gap-12 lg:gap-24 w-full lg:w-auto">
             <div className="space-y-6">
               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Sitemap</h4>
               <ul className="space-y-4">
@@ -51,22 +51,6 @@ const Footer = ({ profile, achieves }) => {
                 ))}
               </ul>
             </div>
-
-            <div className="md:col-span-2 space-y-6">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Legal & Compliance</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="glass-card p-4 border-white/5 flex items-center gap-4">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-none">
-                    Encrypted Transmission Standards Active
-                  </p>
-                </div>
-                <div className="glass-card p-4 border-white/5 flex items-center gap-4">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-none">
-                    MERN Stack Integration Verified
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -74,16 +58,6 @@ const Footer = ({ profile, achieves }) => {
           <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.3em]">
             © 2026 Code & Architecture by <span className="text-slate-400">Sekhar Parida</span>
           </p>
-          <div className="flex gap-10">
-            <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-primary/40"></span>
-              Built with MERN (Frontend-Only)
-            </span>
-            <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-secondary/40"></span>
-              Modern Design Standards 4.0
-            </span>
-          </div>
         </div>
       </div>
     </footer>
