@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-slate-200 font-inter antialiased overflow-x-hidden;
+    scroll-behavior: smooth;
+    max-width: 100vw;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit font-bold;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-dark-secondary/60 backdrop-blur-md border border-white/10 rounded-[2rem];
+  }
+  
+  .btn-primary {
+    @apply px-8 py-3 bg-primary text-dark font-black rounded-full transition-all duration-300
+           hover:shadow-[0_0_30px_rgba(56,189,248,0.6)] hover:-translate-y-1 active:translate-y-0 uppercase tracking-widest text-xs;
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-3 bg-transparent border border-primary/30 text-primary font-bold rounded-full
+           transition-all duration-300 hover:bg-primary/10 hover:border-primary uppercase tracking-widest text-xs;
+  }
+  
+  .section-title {
+    @apply text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black font-outfit mb-12 md:mb-16 text-center tracking-tighter uppercase;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Bento Grid Utilities */
+  .bento-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8;
+  }
+
+  .bento-item {
+    @apply glass-card relative overflow-hidden transition-all duration-500 hover:border-primary/40;
+  }
+}
+
+/* Advanced Shimmer Effect */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-effect::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent;
+  animation: shimmer 2s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-secondary rounded-full border-4 border-dark hover:bg-primary/50 transition-colors;
+}
