@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import { profileData, experiences, projects, skillCategories, achievements, education, leadership } from './data';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
+      <Analytics />
       <Navbar activeSection={activeSection} />
       
       <main>
