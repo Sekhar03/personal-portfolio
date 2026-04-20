@@ -6,6 +6,17 @@ import coalMineImg from './assets/coal_mine_dashboard_v2_1776323453500.png';
 import openSpeedyImg from './assets/openspeedy_system_1776323494880.png';
 import horizonImg from './assets/horizon_3d_visuals_1776323541668.png';
 import iiecAdminImg from './assets/iiec_admin_dashboard_1776323584619.png';
+import hackathonImg from './assets/hackathon_achievement.png';
+import tfugImg from './assets/tfug_core_member.png';
+import aiMailerImg from './assets/ai_mailer_project.png';
+import codexFarewellImg from './assets/codex_farewell.png';
+import startupYatraImg from './assets/startup_yatra_victory.png';
+import svapakImg from './assets/svapak_post.png';
+import fortinetCertImg from './assets/fortinet_certificate.png';
+import nirmanImg from './assets/nirman_hackathon.png';
+import iiecAchievementImg from './assets/iiec_achievement.png';
+import visaCertImg from './assets/visa_certificate.png';
+import udemyWebImg from './assets/udemy_web_dev.png';
 
 export const profileData = {
   name: "Sekhar Parida",
@@ -54,6 +65,16 @@ export const experiences = [
     ]
   },
   {
+    company: "Indian Oil Corporation Limited (IOCL)",
+    role: "Industrial Internship Trainee",
+    period: "June 2024 – July 2024",
+    highlights: [
+      "Completed intensive industrial training at Paradip Refinery focusing on 'Study of Distributed Control System (DCS) & Instrumentation'.",
+      "Gained hands-on exposure to PLC, SCADA, and Field Instrumentation mapping in real-time refinery operations.",
+      "Analyzed refinery operation workflows to understand automated control loops and mission-critical instrumentation."
+    ]
+  },
+  {
     company: "IGIT Sarang",
     role: "Website Secretary",
     period: "Mar 2025 – 2026",
@@ -77,6 +98,7 @@ export const experiences = [
     company: "Svapak",
     role: "Web Developer",
     period: "Jun 2023 – July 2024",
+    image: svapakImg,
     highlights: [
       "Developed the core blog infrastructure and performed regular website maintenance.",
       "Achieved a 30% increase in Search Engine ranking through optimized SEO practices.",
@@ -104,6 +126,15 @@ export const experiences = [
 ];
 
 export const leadership = [
+  {
+    organization: "TFUG Bhubaneswar",
+    role: "Core Team Member",
+    period: "2024 - 2025",
+    highlights: [
+      "Selected as a Core Member for the TensorFlow User Group (TFUG) Bhubaneswar board.",
+      "Leading community initiatives to democratize AI/ML knowledge and organizing technical workshops."
+    ]
+  },
   {
     organization: "GDG IGIT Sarang",
     role: "Operations Core Team Lead",
@@ -150,6 +181,22 @@ export const projects = [
     description: "Secure satellite-ground communication system integrating BB84 protocol and Polkadot blockchain for tamper-proof transmission. Top 7 Finalist at Hack for Tomorrow.",
     tech: ["Golang", "Polkadot", "Quantum Crypt", "WebSocket", "Docker"],
     link: "https://github.com/Sekhar03/Thunderbird"
+  },
+  {
+    title: "AI Job Mailer",
+    category: "Full-Stack + AI Automation",
+    image: aiMailerImg,
+    description: "Intelligent cold-emailing platform for job seekers featuring bulk automation and AI-driven personalization to streamline application workflows.",
+    tech: ["Node.js", "Express", "OpenAI API", "Nodemailer", "React"],
+    link: "https://github.com/Sekhar03/Email-Application-Automation"
+  },
+  {
+    title: "Nirman Hackathon",
+    category: "Full-Stack + Innovation",
+    image: nirmanImg,
+    description: "Multi-disciplinary project involving full-stack development and hardware integration, developed for Silicon University's inaugural Nirman Hackathon.",
+    tech: ["React", "Express", "Node.js", "IoT"],
+    link: "https://github.com/Sekhar03"
   },
   {
     title: "ID Card Tracking System",
@@ -221,9 +268,49 @@ export const skillCategories = [
 ];
 
 export const achievements = [
-  "1st Place — Startup Odisha Competition (Cultural Heritage App)",
-  "First Prize for Seminar Talk — 'Integrating Electronics and AI' at IGIT Sarang",
-  "Awarded — Startup Yatra Bootcamp (EV Solar Charging System)",
-  "Top 7 Finalist — Hack for Tomorrow Hackathon (VSSUT Burla)",
-  "Published Researcher — Peer-reviewed Conference Paper (Satellite Mission Management)"
+  {
+    title: "1st Place — Startup Odisha Competition",
+    image: startupYatraImg,
+    badge: "Champion"
+  },
+  {
+    title: "Network Security Associate — Fortinet",
+    image: fortinetCertImg,
+    badge: "Certified"
+  },
+  {
+    title: "Top 7 Finalist — Hack for Tomorrow (ThunderBird)",
+    image: hackathonImg,
+    badge: "Finalist"
+  },
+  {
+    title: "Core Member — TFUG Bhubaneswar Board",
+    image: tfugImg,
+    badge: "Leadership"
+  },
+  {
+    title: "Technical Excellence — IIEC Cell",
+    image: iiecAchievementImg,
+    badge: "Academic"
+  },
+  {
+    title: "Website Secretary — IGIT Sarang Official Site",
+    image: codexFarewellImg,
+    badge: "Governance"
+  },
+  {
+    title: "Awarded — Startup Yatra Bootcamp (Victory)",
+    image: startupYatraImg,
+    badge: "Winner"
+  },
+  {
+    title: "Visa Token Service — Certification",
+    image: visaCertImg,
+    badge: "Specialist"
+  },
+  {
+    title: "The Complete Web Development — Udemy",
+    image: udemyWebImg,
+    badge: "Certified"
+  }
 ];

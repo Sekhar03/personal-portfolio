@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Hero3D from './Hero3D';
+import TextScramble from './TextScramble';
 
 const Typewriter = ({ texts }) => {
   const [index, setIndex] = useState(0);
@@ -117,7 +119,9 @@ const Hero = ({ data }) => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-50"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
             </span>
-            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 text-center">System Status: Optimal // Seeking Next Challenge</span>
+            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 text-center">
+              <TextScramble text="System Status: Optimal // Seeking Next Challenge" speed={30} delay={500} />
+            </span>
           </motion.div>
           
           {/* Cinematic Headline */}
@@ -130,7 +134,12 @@ const Hero = ({ data }) => {
                     i === 1 || i === 3 ? "text-gradient" : "text-white"
                   }`}
                 >
-                  {word}
+                  <TextScramble 
+                    text={word} 
+                    speed={50} 
+                    delay={800 + i * 200} 
+                    scrambleSpeed={1.5}
+                  />
                 </motion.span>
               </div>
             ))}
@@ -141,7 +150,7 @@ const Hero = ({ data }) => {
             variants={revealVariants}
             className="text-sm sm:text-base md:text-lg font-bold font-outfit text-white/90 mb-6 md:mb-8 min-h-[1.5em] flex items-center border-l-2 border-white/5 pl-4 md:pl-6"
           >
-            Executing: <span className="ml-2 md:ml-4 font-black"><Typewriter texts={typingTexts} /></span>
+            <TextScramble text="Executing:" speed={40} delay={1500} /> <span className="ml-2 md:ml-4 font-black"><Typewriter texts={typingTexts} /></span>
           </motion.div>
           
           {/* Technical Narrative */}
@@ -149,7 +158,7 @@ const Hero = ({ data }) => {
             variants={revealVariants}
             className="text-sm sm:text-base md:text-lg text-slate-400 font-medium max-w-xl mb-10 lg:mb-14 leading-relaxed"
           >
-            I'm <span className="text-white font-bold">{data.name}</span>, a professional <span className="text-primary">{data.title}</span> transforming 
+            I'm <span className="text-white font-bold"><TextScramble text={data.name} speed={50} delay={1800} /></span>, a professional <span className="text-primary"><TextScramble text={data.title} speed={50} delay={2000} /></span> transforming 
             raw terminal logic into <span className="text-white bg-white/5 px-2 py-1 rounded">production-grade</span> value. I bridge the gap between 
             complex systems and human-centric design.
           </motion.p>
@@ -159,68 +168,65 @@ const Hero = ({ data }) => {
             variants={revealVariants}
             className="flex flex-wrap gap-6 lg:gap-10 items-center justify-center lg:justify-start"
           >
-            <a href="#contact" className="btn-primary w-full sm:w-auto px-10 py-5 group relative overflow-hidden bg-primary/95 hover:bg-primary transition-colors text-center">
+            <a 
+              href="mailto:sekharparida2003@gmail.com?subject=Job%20Opportunity%20%2F%20Proposal&body=Role%3A%20%5BEnter%20Role%5D%0AAmount%20to%20Offer%3A%20%5BEnter%20Amount%5D%0ADetails%3A%20%5BEnter%20Details%5D" 
+              className="btn-primary w-full sm:w-auto px-10 py-5 group relative overflow-hidden bg-primary/95 hover:bg-primary transition-colors text-center"
+            >
               <span className="relative z-10 flex items-center justify-center gap-3">
-                Push to Production
-                <i className="fas fa-code-branch opacity-50"></i>
+                Hire Me
+                <i className="fas fa-paper-plane opacity-80"></i>
               </span>
               <div className="absolute inset-x-0 bottom-0 h-1 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </a>
             <a href="#projects" className="group flex items-center justify-center gap-4 text-slate-500 font-black hover:text-white transition-all uppercase tracking-[0.4em] text-[10px] sm:text-[11px] w-full sm:w-auto">
-              Review Codebase
+              Follow My Journey
               <motion.span
                 animate={{ x: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <i className="fas fa-chevron-right text-primary"></i>
+                <i className="fas fa-chevron-down text-primary"></i>
               </motion.span>
             </a>
           </motion.div>
         </motion.div>
 
-        {/* Profile Visual Stack */}
+        {/* 3D Visual Model & Photo Integration */}
         <motion.div 
-          initial={{ opacity: 0, x: 80, scale: 0.9 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
           className="relative flex justify-center lg:justify-end order-1 lg:order-2 w-full max-w-[500px] lg:max-w-none mx-auto lg:mx-0 pr-0 lg:pr-12"
         >
-          <div className="relative w-full aspect-[4/5] max-w-full sm:max-w-[320px] md:max-w-[360px] lg:max-w-[420px] max-h-[50vh] sm:max-h-[60vh] lg:max-h-[75vh]">
-            {/* Background Structural Frame */}
+          <div className="relative w-full aspect-square flex items-center justify-center">
+            {/* Background 3D Model Layer */}
+            <div className="absolute inset-0 z-0">
+              <Hero3D />
+            </div>
+
+            {/* Glassmorphic Photo Card Layer */}
             <motion.div 
-              animate={{ rotate: [3, 5, 3], scale: [1, 1.05, 1] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-primary/5 to-secondary/20 rounded-[2.5rem] md:rounded-[3rem] rotate-3 scale-105"
-            ></motion.div>
-            
-            {/* Main Visual Container */}
-            <div className="absolute inset-0 bg-dark-secondary border border-white/5 rounded-[2.5rem] md:rounded-[3rem] -rotate-3 overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
+              whileHover={{ scale: 1.05, rotateY: 3, rotateX: -3 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="relative z-10 w-[240px] sm:w-[280px] md:w-[320px] aspect-[3/4] bg-white/[0.02] backdrop-blur-[40px] border border-white/10 rounded-[3rem] overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.7)] group"
+            >
               <img 
                 src={data.image} 
                 alt={data.name} 
-                className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-1000 transform hover:scale-105"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/10 to-transparent opacity-60"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent opacity-80"></div>
               
-              {/* Floating Terminal Meta-Tag */}
-              <div className="absolute top-8 left-8 inline-flex items-center gap-3 px-4 py-2 bg-dark/80 backdrop-blur-md border border-white/10 rounded-xl">
-                <div className="flex gap-1">
-                  <span className="w-2 h-2 rounded-full bg-red-500/50"></span>
-                  <span className="w-2 h-2 rounded-full bg-yellow-500/50"></span>
-                  <span className="w-2 h-2 rounded-full bg-green-500/50"></span>
+              {/* Floating Meta-Tag */}
+              <div className="absolute bottom-6 left-6 right-6 p-5 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(56,189,248,0.8)]"></div>
+                  <span className="text-[10px] font-mono text-slate-300 uppercase tracking-[0.3em] font-black">Auth: Fintech_Eng.sh</span>
                 </div>
-                <span className="text-[10px] font-mono text-slate-500">profile.sh</span>
               </div>
-            </div>
-            
-            {/* Engineering Badge */}
-            <motion.div 
-              animate={{ y: [0, -20, 0], rotate: [0, 8, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 w-24 h-24 lg:w-32 lg:h-32 bg-dark-secondary/80 backdrop-blur-2xl border border-white/10 rounded-[2rem] lg:rounded-[2.5rem] flex items-center justify-center shadow-2xl z-20 group"
-            >
-              <i className="fas fa-terminal text-primary text-3xl lg:text-5xl group-hover:scale-110 transition-transform"></i>
             </motion.div>
+            
+            {/* Outer Glows */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-primary/10 to-transparent blur-3xl rounded-full"></div>
           </div>
         </motion.div>
       </div>
