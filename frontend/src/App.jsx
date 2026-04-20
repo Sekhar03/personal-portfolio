@@ -14,6 +14,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Background3D from './components/Background3D';
 import CustomCursor from './components/CustomCursor';
+import SectionOrb from './components/SectionOrb';
 
 import Preloader from './components/Preloader';
 
@@ -58,7 +59,7 @@ function App() {
             key="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.15 }}
             className="relative z-10"
           >
             <Background3D />
@@ -68,7 +69,7 @@ function App() {
               <Hero data={profileData} />
               
               {/* Story Pipeline Container */}
-              <div className="relative max-w-7xl mx-auto mt-20">
+              <div className="relative max-w-[1600px] mx-auto mt-20">
                 {/* The Continuous Vertical Line */}
                 <div className="story-line"></div>
 
@@ -78,13 +79,18 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-100px" }}
                   variants={sectionVariants}
-                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 md:pr-8 w-full z-10"
+                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 md:pr-8 xl:pr-4 w-full z-10"
                 >
                   <div className="story-node top-32"></div>
-                  <div className="chapter-badge">Chapter 01</div>
-                  <h2 className="section-title tracking-tight text-left !mb-8">Technical <span className="text-gradient">Evolution</span></h2>
-                  <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">The architecture of my professional journey, moving from core concepts to enterprise-grade product engineering.</p>
-                  <Experience items={experiences} />
+                  <div className="flex items-start gap-0 xl:gap-8">
+                    <div className="flex-1 min-w-0">
+                      <div className="chapter-badge">Chapter 01</div>
+                      <h2 className="section-title tracking-tight text-left !mb-8">Technical <span className="text-gradient">Evolution</span></h2>
+                      <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">The architecture of my professional journey, moving from core concepts to enterprise-grade product engineering.</p>
+                      <Experience items={experiences} />
+                    </div>
+                    <SectionOrb sectionId="experience" />
+                  </div>
                 </motion.section>
 
                 <motion.section 
@@ -93,13 +99,18 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-100px" }}
                   variants={sectionVariants}
-                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 md:pr-8 w-full z-10"
+                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 xl:pr-4 w-full z-10"
                 >
                   <div className="story-node top-32"></div>
-                  <div className="chapter-badge">Chapter 02</div>
-                  <h2 className="section-title tracking-tight text-left !mb-8">Leadership <span className="text-gradient">& Impact</span></h2>
-                  <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">Scaling influence beyond code through community building, team mentorship, and operational strategy.</p>
-                  <LeadershipSection items={leadership} />
+                  <div className="flex items-start gap-0 xl:gap-8">
+                    <div className="flex-1 min-w-0">
+                      <div className="chapter-badge">Chapter 02</div>
+                      <h2 className="section-title tracking-tight text-left !mb-8">Leadership <span className="text-gradient">& Impact</span></h2>
+                      <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">Scaling influence beyond code through community building, team mentorship, and operational strategy.</p>
+                      <LeadershipSection items={leadership} />
+                    </div>
+                    <SectionOrb sectionId="leadership" />
+                  </div>
                 </motion.section>
 
                 <motion.section 
@@ -108,13 +119,18 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-100px" }}
                   variants={sectionVariants}
-                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 md:pr-8 w-full z-10"
+                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 xl:pr-4 w-full z-10"
                 >
                   <div className="story-node top-32"></div>
-                  <div className="chapter-badge">Chapter 03</div>
-                  <h2 className="section-title tracking-tight text-left !mb-8">Engineering <span className="text-gradient">Products</span></h2>
-                  <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">A portfolio of full-stack ecosystems, quantum-secured communications, and high-performance WebGL visualizers.</p>
-                  <Projects items={projects} />
+                  <div className="flex items-start gap-0 xl:gap-8">
+                    <div className="flex-1 min-w-0">
+                      <div className="chapter-badge">Chapter 03</div>
+                      <h2 className="section-title tracking-tight text-left !mb-8">Engineering <span className="text-gradient">Products</span></h2>
+                      <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">A portfolio of full-stack ecosystems, quantum-secured communications, and high-performance WebGL visualizers.</p>
+                      <Projects items={projects} />
+                    </div>
+                    <SectionOrb sectionId="projects" />
+                  </div>
                 </motion.section>
 
                 <motion.section 
@@ -123,13 +139,18 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-100px" }}
                   variants={sectionVariants}
-                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 md:pr-8 w-full z-10"
+                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 xl:pr-4 w-full z-10"
                 >
                   <div className="story-node top-32"></div>
-                  <div className="chapter-badge">Chapter 04</div>
-                  <h2 className="section-title tracking-tight text-left !mb-8">Core <span className="text-gradient">Competencies</span></h2>
-                  <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">The raw terminal logic and languages that power my technical execution layer.</p>
-                  <Skills categories={skillCategories} />
+                  <div className="flex items-start gap-0 xl:gap-8">
+                    <div className="flex-1 min-w-0">
+                      <div className="chapter-badge">Chapter 04</div>
+                      <h2 className="section-title tracking-tight text-left !mb-8">Core <span className="text-gradient">Competencies</span></h2>
+                      <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">The raw terminal logic and languages that power my technical execution layer.</p>
+                      <Skills categories={skillCategories} />
+                    </div>
+                    <SectionOrb sectionId="skills" />
+                  </div>
                 </motion.section>
 
                 <motion.section 
@@ -138,13 +159,18 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-100px" }}
                   variants={sectionVariants}
-                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 md:pr-8 w-full z-10"
+                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 xl:pr-4 w-full z-10"
                 >
                   <div className="story-node top-32"></div>
-                  <div className="chapter-badge">Chapter 05</div>
-                  <h2 className="section-title tracking-tight text-left !mb-8">Academic <span className="text-gradient">Chronicles</span></h2>
-                  <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">The foundational computer science and engineering coursework that established my baseline logic patterns.</p>
-                  <EducationSection items={education} />
+                  <div className="flex items-start gap-0 xl:gap-8">
+                    <div className="flex-1 min-w-0">
+                      <div className="chapter-badge">Chapter 05</div>
+                      <h2 className="section-title tracking-tight text-left !mb-8">Academic <span className="text-gradient">Chronicles</span></h2>
+                      <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">The foundational computer science and engineering coursework that established my baseline logic patterns.</p>
+                      <EducationSection items={education} />
+                    </div>
+                    <SectionOrb sectionId="education" />
+                  </div>
                 </motion.section>
 
                 <motion.section 
@@ -153,13 +179,18 @@ function App() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-100px" }}
                   variants={sectionVariants}
-                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 md:pr-8 w-full z-10"
+                  className="relative py-16 md:py-24 pl-12 pr-4 sm:pr-6 md:pl-24 xl:pr-4 w-full z-10"
                 >
                   <div className="story-node top-32"></div>
-                  <div className="chapter-badge">Chapter 06</div>
-                  <h2 className="section-title tracking-tight text-left !mb-8">Professional <span className="text-gradient">Recognition</span></h2>
-                  <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">Global certifications, hackathon victories, and official acknowledgments of system-level proficiency.</p>
-                  <Recognition items={achievements} />
+                  <div className="flex items-start gap-0 xl:gap-8">
+                    <div className="flex-1 min-w-0">
+                      <div className="chapter-badge">Chapter 06</div>
+                      <h2 className="section-title tracking-tight text-left !mb-8">Professional <span className="text-gradient">Recognition</span></h2>
+                      <p className="text-slate-400 mb-10 text-sm md:text-base leading-relaxed">Global certifications, hackathon victories, and official acknowledgments of system-level proficiency.</p>
+                      <Recognition items={achievements} />
+                    </div>
+                    <SectionOrb sectionId="recognition" />
+                  </div>
                 </motion.section>
               </div>
 

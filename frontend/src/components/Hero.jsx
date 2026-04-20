@@ -46,8 +46,8 @@ const Hero = ({ data }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        staggerChildren: 0.08,
+        delayChildren: 0,
       },
     },
   };
@@ -55,29 +55,26 @@ const Hero = ({ data }) => {
   const wordVariants = {
     hidden: { 
       opacity: 0, 
-      y: 60, 
-      filter: 'blur(25px)',
-      scale: 0.7
+      y: 30, 
+      filter: 'blur(10px)',
     },
     visible: { 
       opacity: 1, 
       y: 0, 
       filter: 'blur(0px)',
-      scale: 1,
       transition: { 
-        duration: 1.4, 
+        duration: 0.6, 
         ease: [0.16, 1, 0.3, 1]
       }
     },
   };
 
   const revealVariants = {
-    hidden: { opacity: 0, y: 30, filter: 'blur(5px)' },
+    hidden: { opacity: 0, y: 15 },
     visible: { 
       opacity: 1, 
       y: 0,
-      filter: 'blur(0px)',
-      transition: { duration: 0.8, delay: 0.6, ease: "easeOut" }
+      transition: { duration: 0.5, delay: 0.15, ease: "easeOut" }
     }
   };
 
@@ -120,7 +117,7 @@ const Hero = ({ data }) => {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
             </span>
             <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] text-primary/80 text-center">
-              <TextScramble text="System Status: Optimal // Seeking Next Challenge" speed={30} delay={500} />
+              <TextScramble text="System Status: Optimal // Seeking Next Challenge" speed={30} delay={100} />
             </span>
           </motion.div>
           
@@ -137,7 +134,7 @@ const Hero = ({ data }) => {
                   <TextScramble 
                     text={word} 
                     speed={50} 
-                    delay={800 + i * 200} 
+                    delay={200 + i * 80} 
                     scrambleSpeed={1.5}
                   />
                 </motion.span>
@@ -192,9 +189,9 @@ const Hero = ({ data }) => {
 
         {/* 3D Visual Model & Photo Integration */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="relative flex justify-center lg:justify-end order-1 lg:order-2 w-full max-w-[500px] lg:max-w-none mx-auto lg:mx-0 pr-0 lg:pr-12"
         >
           <div className="relative w-full aspect-square flex items-center justify-center">
